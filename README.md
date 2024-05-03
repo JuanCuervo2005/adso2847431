@@ -14,4 +14,4 @@
 
 |URL Netlify/Vercel|
 |---|
-| [Open Link](https://adso2847431.netlify.app) |
+| [Open Link](https://repo2847431.vercel.app/) |

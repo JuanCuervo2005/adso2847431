@@ -73,6 +73,7 @@ body {
                         &:hover{
                             transform: translateX(-5px);
                             transition: transform 0.2s ease-in;
+                            background: transparent;
                         }
                         span {
                             background: url(../img/btn-prev.svg) no-repeat center;
@@ -83,6 +84,7 @@ body {
                         &:hover{
                             transform: translateX(5px);
                             transition: transform 0.2s ease-in;
+                            background: transparent;
                         }
                         span {
                             background: url(../img/btn-next.svg) no-repeat center;

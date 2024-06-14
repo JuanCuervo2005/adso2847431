@@ -48,6 +48,25 @@ body {
             }
             section.slider {
                 height: 604px;
+                div.owl-nav {
+                    background-color: red;
+                    display: flex;
+                    justify-content: space-between;
+                    position: absolute;
+                    width: 100%;
+                    top: 50%;
+                    button.owl-prev {
+                        span {
+
+                        }
+                    }
+
+                    button.owl-next {
+                        span {
+                            
+                        }
+                    }
+                }
                 img {
                     width: 100%;
                 }

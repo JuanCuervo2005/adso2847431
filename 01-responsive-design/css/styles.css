@@ -1,0 +1,56 @@
+/* - - - - - - - - - - 
+F o n t s
+- - - - - - - - - - */
+@import url('fonts.css');
+/* - - - - - - - - - - 
+R e s e t
+- - - - - - - - - - */
+@import url('reset.css');
+/* - - - - - - - - - - 
+V a r i a b l e s
+- - - - - - - - - - */
+:root {
+    --font-heading: 'Aclonica', sans-serif;
+    --font-body: 'Marcellus', sans-serif;
+    --color1: #e39f44;
+    --color2: #ebdf67;
+    --color3: #d2851b;
+    --color4: #200134;
+}
+/* - - - - - - - - - - 
+G e n e r a l
+- - - - - - - - - - */
+body {
+    background-color: var(--color3);
+    color: var(--color2);
+    main {
+        header {
+            background-color: var(--color4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100px;
+            padding-inline: 3rem;
+        }
+        nav {
+            display: flex;
+            gap: 4rem;
+            a:is(:link, :visited){
+                color: white;
+                font-family: var(--font-heading);
+                text-decoration: none;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                transition: transform 0.2s ease-in;
+                flex-direction: column;
+                }
+            }
+            section.slider {
+                height: 604px;
+                img {
+                    width: 100%;
+                }
+        }
+    }
+}

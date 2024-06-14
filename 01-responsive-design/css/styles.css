@@ -45,25 +45,47 @@ body {
                 transition: transform 0.2s ease-in;
                 flex-direction: column;
                 }
+                a:is(:hover) {
+                    transform: scale(1.1);
+                }
+                a:is(:hover)img {
+                    transform: translateY(5px);
+                }
             }
             section.slider {
                 height: 604px;
                 div.owl-nav {
-                    background-color: red;
                     display: flex;
                     justify-content: space-between;
                     position: absolute;
                     width: 100%;
                     top: 50%;
-                    button.owl-prev {
+                    button {
                         span {
-
+                            background-color: red;
+                            display: flex;
+                            height: 100px;
+                            width: 100px;
+                            text-indent: -9999px;
+                        }
+                    }
+                    button.owl-prev {
+                        &:hover{
+                            transform: translateX(-5px);
+                            transition: transform 0.2s ease-in;
+                        }
+                        span {
+                            background: url(../img/btn-prev.svg) no-repeat center;
                         }
                     }
 
                     button.owl-next {
+                        &:hover{
+                            transform: translateX(5px);
+                            transition: transform 0.2s ease-in;
+                        }
                         span {
-                            
+                            background: url(../img/btn-next.svg) no-repeat center;
                         }
                     }
                 }

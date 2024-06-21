@@ -10,34 +10,90 @@
 </head>
 <body>
     <main>
+        <a name="home"></a>
     <!-- Navbar -->
      <header>
         <img src="img/logo.png" alt="Isologo">
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#personajes">Personajes</a>
+            <a href="#home">Inicio</a>
+            <a href="#characters">Personajes</a>
             <a href="#historia">Historia</a>
             <a href="#perks">Perks</a>
         </nav>
      </header>
          <!-- slider -->
-          <section class="slider owl-carousel owl-theme">
+          <section class="slider1 owl-carousel owl-theme">
             <img src="img/slider01.png" alt="Slider01">
             <img src="img/slider01.png" alt="Slider01">
             <img src="img/slider01.png" alt="Slider01">
           </section>
+          <!-- Characters -->
+           <section class="characters">
+            <a name="characters"></a>
+            <h2>Personajes</h2>
+            <div class="slider2 owl-carousel owl-theme">
+                <article>
+                    <figure>
+                        <img src="img/characters/peppino.png" alt="set1">
+                        <figcaption>Peppino Spaguetti</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <figure>
+                        <img src="img/characters/gustavo.png" alt="set2">
+                        <figcaption>Gustavo y Ladrillo</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <figure>
+                        <img src="img/characters/pizza.png" alt="set3">
+                        <figcaption>Pizza Face</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <figure>
+                        <img src="img/characters/sacerdote.png" alt="set4">
+                        <figcaption>Sacerdote</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <figure>
+                        <img src="img/characters/sacerdote.png" alt="set5">
+                        <figcaption>Sacerdote</figcaption>
+                    </figure>
+                </article>
+            </div>
+           </section>
     </main>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.owl-carousel').owlCarousel({
+            $('.slider1').owlCarousel({
                 stagePadding: 0,
                 items: 1,
                 loop: true,
                 nav: true
             })
-                    })
+            $('.slider2').owlCarousel({
+                //margin:10,
+                margin: 10,
+                loop: true,
+                dots: false,
+                nav: true,
+                responsive:{
+                    0:{
+                        items: 1
+                    },
+                    600:{
+                        items: 2
+                    },
+                    1000:{
+                        items: 4
+                    }
+                }
+            })
+        })
     </script>
 </body>
 </html>

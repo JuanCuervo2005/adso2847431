@@ -3,85 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Tower</title>
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Pizza Tower</title>
 </head>
 <body>
     <main>
         <a name="home"></a>
-    <!-- Navbar -->
-     <header>
-        <img src="img/logo.png" alt="Isologo">
+        <!-- Navbar -->
+    <header>
+        <img class="logo" src="img/logo.png" alt="">
+        <button class="hamburger" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav>
-            <a href="#home">Inicio</a>
-            <a href="#characters">Personajes</a>
-            <a href="#historia">Historia</a>
-            <a href="#perks">Perks</a>
+            <a href="#home">
+                <img src="img/border-botton-arriba.png" alt="">
+                Inicio
+                <img src="img/border-botton-abajo.png" alt="">
+            </a>
+            <a href="#characters">
+                <img src="img/border-botton-arriba.png" alt="">
+                Personajes
+                <img src="img/border-botton-abajo.png" alt="">
+            </a>
+            <a href="#History">
+                <img src="img/border-botton-arriba.png" alt="">
+                Historia
+                <img src="img/border-botton-abajo.png" alt="">
+            </a>
+            <a href="#Weapons">
+                <img src="img/border-botton-arriba.png" alt="">
+                Perks
+                <img src="img/border-botton-abajo.png" alt="">
+            </a>
         </nav>
-     </header>
-         <!-- slider -->
+    </header>
+
+    <!-- Menú para dispositivos móviles -->
+
+    <div class="mobile-menu">
+        <a href="#home">Inicio</a>
+        <a href="#characters">Personajes</a>
+        <a href="#History">Historia</a>
+        <a href="#Weapons">Perks</a>
+    </div>
+
+         <!-- Sliders -->
           <section class="slider1 owl-carousel owl-theme">
-            <img src="img/slider01.png" alt="Slider01">
-            <img src="img/slider01.png" alt="Slider01">
-            <img src="img/slider01.png" alt="Slider01">
+            <img src="img/slider01.png" alt="">
+            <img src="img/slider01.png" alt="">
+            <img src="img/slider01.png" alt="">
+            <img src="img/slider01.png" alt="">
           </section>
-          <!-- Characters -->
-           <section class="characters">
+          <!--Characters-->
+          <section class="characters">
             <a name="characters"></a>
-            <h2>Personajes</h2>
+            <h2>
+                Personajes
+            </h2>
             <div class="slider2 owl-carousel owl-theme">
                 <article>
                     <figure>
-                        <img src="img/characters/peppino.png" alt="set1">
-                        <figcaption>Peppino Spaguetti</figcaption>
+                        <img src="img/characters/peppino.png" alt="Peppino">
+                        <figcaption>Peppino</figcaption>
                     </figure>
                 </article>
                 <article>
                     <figure>
-                        <img src="img/characters/gustavo.png" alt="set2">
+                        <img src="img/characters/gustavo.png" alt="Gustavo y Ladrillo">
                         <figcaption>Gustavo y Ladrillo</figcaption>
                     </figure>
                 </article>
                 <article>
                     <figure>
-                        <img src="img/characters/pizza.png" alt="set3">
+                        <img src="img/characters/pizza.png" alt="Pizza Face">
                         <figcaption>Pizza Face</figcaption>
                     </figure>
                 </article>
                 <article>
                     <figure>
-                        <img src="img/characters/sacerdote.png" alt="set4">
+                        <img src="img/characters/sacerdote.png" alt="Sacerdote">
                         <figcaption>Sacerdote</figcaption>
                     </figure>
                 </article>
                 <article>
                     <figure>
-                        <img src="img/characters/sacerdote.png" alt="set5">
+                        <img src="img/characters/sacerdote.png" alt="Sacerdote">
                         <figcaption>Sacerdote</figcaption>
                     </figure>
                 </article>
             </div>
-           </section>
+          </section>
+
+        <!--History-->
+
+        <section class="history">
+            <a name="History"></a>
+            <div class="history-background">
+              <h2>
+                  Historia
+              </h2>
+              <div class="slider3 owl-carousel owl-theme">
+                  <article>
+                      <figure>
+                          <img src="img/Historia.png" alt="Historia">
+                          <figcaption>Historia</figcaption>
+                          <div class="info_histo">
+                              <h3>Historia</h3>
+                              <p>
+                                Peppino era un chef de pizzas en banca rota, el estaba viendo su escasez de dinero, cuando Pizzaface apareció frente a el, amenazandolo con destruir su pizzeria Peppino’s Pizza, momento en el que Peppino emprende su viaje hacia la Pizza tower.
+                                Durante su estancia, Peppino asciende la torre, hasta llegar a Pizzaface, 
+                            </p>
+                          </div>
+                      </figure>
+                  </article>
+                  <article>
+                    <figure>
+                        <img src="img/Final.png" alt="Final">
+                        <figcaption>Final</figcaption>
+                        <div class="info_histo">
+                            <h3>Final</h3>
+                            <p>
+                              Peppino era un chef de pizzas en banca rota, el estaba viendo su escasez de dinero, cuando Pizzaface apareció frente a el, amenazandolo con destruir su pizzeria Peppino’s Pizza, momento en el que Peppino emprende su viaje hacia la Pizza tower.
+                              Durante su estancia, Peppino asciende la torre, hasta llegar a Pizzaface, 
+                          </p>
+                        </div>
+                    </figure>
+                </article>
+              </div>
+            </div>
+        </section>
+        <!--Weapons-->
+
+        <section class="weapons">
+            <a name="Weapons"></a>
+            <div>
+                <h2>
+                    Perks
+                </h2>
+                <div class="slider4 owl-carousel owl-theme">
+                    <article>
+                        <figure>
+                            <img src="img/perks/T1.png" alt="perk1">
+                            <img src="img/perks/T2.png" alt="perk2">
+                        </figure>
+                    </article>
+                    <article>
+                        <figure>
+                            <img src="img/perks/T3.png" alt="Perk3">
+                            <img src="img/perks/T4.png" alt="Perk4">
+                        </figure>
+                    </article>
+                    <article>
+                        <figure>
+                            <img src="img/perks/T5.png" alt="perk5">
+                            <img src="img/perks/T6.png" alt="perk6">
+                        </figure>
+                    </article>
+                    <article>
+                        <figure>
+                            <img src="img/perks/T7.png" alt="perk7">
+                            <img src="img/perks/T8.png" alt="Perk8">
+                        </figure>
+                    </article>
+                </div>
+                <h1>
+                    <button class="btn">
+                        Description
+                    </button>
+                </h1>
+            </div>
+        </section>
+
+        <section class="websocial">
+    <div class="webs">
+        <article>
+            <figure>
+                <img src="img/Logos/instagram.png" alt="">
+                <img src="img/Logos/facebook.png" alt="">
+                <img src="img/Logos/tik-tok.png" alt="">
+                <img src="img/Logos/youtube.png" alt="">
+            </figure>
+        </article>
+        <h1>All rights reserved</h1>
+    </div>
+</section>
+
     </main>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function(){
             $('.slider1').owlCarousel({
                 stagePadding: 0,
                 items: 1,
                 loop: true,
-                nav: true
-            })
-            $('.slider2').owlCarousel({
-                //margin:10,
                 margin: 10,
+                nav: true
+            });
+
+            $('.slider2').owlCarousel({
                 loop: true,
+                margin: 10,
                 dots: false,
                 nav: true,
-                responsive:{
+
+                responsive: {
                     0:{
                         items: 1
                     },
@@ -93,7 +224,64 @@
                     }
                 }
             })
-        })
+            
+            $('.slider3').owlCarousel({
+                loop: true,
+                margin: 10,
+                dots: false,
+                nav: true,
+                responsive: {
+                    0:{
+                        items: 1
+                    },
+                    600:{
+                        items: 1
+                    },
+                    1000:{
+                        items: 2
+                    }
+                }
+            });
+
+            $('.slider4').owlCarousel({
+                loop: true,
+                margin: 10,
+                dots: false,
+                
+                responsive: {
+                    0:{
+                        items: 2
+                    },
+                    600:{
+                        items: 3
+                    },
+                    1000:{
+                        items: 4
+                    }
+                }
+            });
+        });
     </script>
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.mobile-menu');
+            menu.classList.toggle('active'); 
+    
+            
+            if (menu.classList.contains('active')) {
+                menu.style.top = `${window.scrollY + 70}px`; 
+            }
+    
+            
+            var links = document.querySelectorAll('.mobile-menu a');
+            links.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    menu.classList.remove('active');
+                });
+            });
+        }
+    </script>
+    
 </body>
 </html>
+

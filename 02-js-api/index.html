@@ -68,6 +68,91 @@
                 img {
                     object-fit: cover;
                 }
+            }
+        }
+
+                /* Modal Styles */
+                .modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 1000;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    animation: fadeIn 0.3s ease-in-out;
+                }
+
+                .modal-content {
+                    background-color: rgba(255, 255, 255, 0.7);
+                    margin: 5% auto;
+                    padding: 2rem;
+                    border-radius: 12px;
+                    max-width: 600px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                    overflow: hidden;
+                    transition: transform 0.3s ease-out;
+                    transform: translateY(-30px);
+                }
+
+                .modal-content img {
+                    max-width: 100%;
+                    border-radius: 10px;
+                    margin-bottom: 1.5rem;
+                }
+
+                .modal-content h2 {
+                    font-size: 2rem;
+                    color: #333;
+                    margin-bottom: 1rem;
+                    font-weight: bold;
+                }
+
+                .modal-content p {
+                    font-size: 1rem;
+                    color: #555;
+                    margin-bottom: 1rem;
+                }
+
+                .modal-content strong {
+                    font-weight: bold;
+                    color: #222;
+                }
+
+                .close {
+                    color: #000000;
+                    font-size: 36px;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    cursor: pointer;
+                    transition: color 0.3s ease;
+                }
+
+                .close:hover {
+                    color: #ff5722;
+                }
+
+                .btn-show {
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 0.6rem 1.2rem;
+                    font-size: 1rem;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    transition: transform 0.3s ease, background-color 0.3s ease;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                }
+
+                .btn-show:hover {
+                    background-color: #45a049;
+                    transform: scale(1.1);
+                }
+
 
                 @media screen and (max-width: 1184px) {
                     section.characters {
@@ -86,8 +171,6 @@
                         grid-template-columns: repeat(4, 220px);
                     }
                 }
-            }
-        }
     </style>
 </head>
 
@@ -109,32 +192,89 @@
         <section class="characters">
 
         </section>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+            </div>
+        </div>
     </main>
     <script>
-        //Fetch All Characters
+        // Elements
+        const characters = document.querySelector('.characters');
+
+        // Fetch all characters
         const fetchCharacters = async () => {
-            for (let i = 1; i <= 40; i++) {
-                const url = 'https://rickandmortyapi.com/api/character/' + i
+            for (let i = 1; i <= 20; i++) {
+                const url = 'https://rickandmortyapi.com/api/character/' + i;
                 await fetch(url)
                     .then((response) => response.json())
                     .then((data) => {
-                        //console.log(data)
-                        characters.innerHTML += '<div class="character"> \
-                        <article> \
-                            <h4>'+ data.name.substring(0, 16) + '</h4> \
-                            <h5 class = "'+ data.status + '">' + data.status + '</h5> \
-                            <button class ="btn-show" data-id ="'+ data.id + '"> info + </button> \
-                            </article> \
-                        <img src="'+ data.image + '"> \
-                        </div>'
-                    })
+                        console.log(data);
+                        characters.innerHTML += `
+                    <div class="character">
+                        <article>
+                            <h4>${data.name.substring(0, 16)}</h4>
+                            <h5 class="${data.status}">${data.status}</h5>
+                            <button class="btn-show" data-id="${data.id}">More info +</button>
+                        </article>
+                        <img src="${data.image}">
+                    </div>`;
+                    });
             }
-            
-        }
-        
 
-        fetchCharacters()
+            // Agregar evento a cada botón después de que se haya cargado el contenido
+            const btns = document.querySelectorAll('.btn-show');
+            btns.forEach((btn) => {
+                btn.addEventListener('click', function () {
+                    const characterId = btn.getAttribute('data-id');
+                    fetchCharacterInfo(characterId);
+                    modal.style.display = "block";
+                });
+            });
+        };
+
+        const fetchCharacterInfo = (id) => {
+            const modal = document.getElementById("myModal");
+            const modalContent = modal.querySelector(".modal-content");
+
+            // Hacer una solicitud para obtener los detalles completos del personaje
+            fetch(`https://rickandmortyapi.com/api/character/${id}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    // Actualizar el contenido del modal con la información del personaje
+                    modalContent.innerHTML = `
+                <span class="close">&times;</span>
+                <h2>${data.name}</h2>
+                <img src="${data.image}" alt="${data.name}" style="width: 100%; height: auto;">
+                <p><strong>Status:</strong> ${data.status}</p>
+                <p><strong>Species:</strong> ${data.species}</p>
+                <p><strong>Gender:</strong> ${data.gender}</p>
+                <p><strong>Location:</strong> ${data.location.name}</p>
+            `;
+
+                    // Mostrar la modal
+                    modal.style.display = "block";
+
+                    // Cerrar la modal cuando el usuario haga clic en la X
+                    const closeModal = modal.querySelector('.close');
+                    closeModal.onclick = function () {
+                        modal.style.display = "none";
+                    };
+
+                    // Cerrar la modal si el usuario hace clic fuera de la ventana modal
+                    window.onclick = function (event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    };
+                });
+        };
+
+        fetchCharacters();
     </script>
+
 </body>
 
 </html>

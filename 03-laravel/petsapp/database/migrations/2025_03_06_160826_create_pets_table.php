@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('breed');
             $table->string('location');
+            $table->text('description');
             $table->timestamps();
         });
     }

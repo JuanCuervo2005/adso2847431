@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use League\CommonMark\Reference\Reference;
 
 return new class extends Migration
 {
@@ -13,6 +14,16 @@ return new class extends Migration
     {
         Schema::create('adoptions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                  ->References('user_id')
+                  ->on('users');
+                  //->onDelete('cascade');
+            $table->unsignedBigInteger('pet_id');
+            $table->foreign('pet_id')
+                  ->References('id')
+                  ->on('pets');
+                  //->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -67,22 +67,18 @@ class UserFactory extends Factory
         }
 
         return [
-            'document' => $document,
-            'fullname' => $fullname,
-            'gender' => $gender,
-            'birthdate' => fake()->dateTimeBetween('1974-01-01', '2004-12-31'),
-            'photo' => $profileImagePath, // Ruta de la imagen en la base de datos
-            'email' => fake()->unique()->safeEmail(),
-            'phone' => fake()->phoneNumber(),
+            'document'          => $document,
+            'fullname'          => $fullname,
+            'gender'            => $gender,
+            'birthdate'         => fake()->dateTimeBetween('1974-01-01', '2004-12-31'),
+            'photo'             => $profileImagePath, 
+            'email'             => fake()->unique()->safeEmail(),
+            'phone'             => fake()->phoneNumber(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('12345'),
-            'remember_token' => Str::random(10),
+            'password'          => static::$password ??= Hash::make('12345'),
+            'remember_token'    => Str::random(10),
         ];
     }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
     public function unverified(): static
     {
         return $this->state(fn(array $attributes) => [

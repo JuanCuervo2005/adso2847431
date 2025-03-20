@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         $user = new User;
         $user->document  = 75000001;
-        $user->fullname  = 'John Wick';
+        $user->fullname  = 'Adolf Hitler';
         $user->gender    = 'Male';
         $user->birthdate = '1980-10-10';
         $user->phone = 3205673456;

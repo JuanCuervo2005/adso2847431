@@ -5,7 +5,13 @@ use Livewire\Volt\Volt;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+});
+
+Route::get('show/users', function () {
+    $users = App\Models\User::all();
+    //dd($users->toArray());
+    return view('users-factory')->with('users', $users);
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -19,4 +25,4 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

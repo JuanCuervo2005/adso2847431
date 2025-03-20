@@ -18,4 +18,8 @@ class Pet extends Model
         'location',
         'description'
     ];
+
+    public function adoption() {
+        return $this->hasOne(Adoption::class);
+    }
 }

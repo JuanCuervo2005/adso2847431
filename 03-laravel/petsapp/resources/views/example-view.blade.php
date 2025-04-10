@@ -7,6 +7,7 @@
     <title>{{$title}}</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
     <h1 class="text-4xl text-center mv-4">{{$title}}</h1>
     <div class="overflow-x-auto">
@@ -26,15 +27,15 @@
                             <div class="flex items-center gap-3">
                                 <div class="avatar">
                                     <div class="mask mask-squircle h-12 w-12">
-                                        <img src="{{ $pet->photo }}" alt="{{ $pet->name }}"/>
+                                        <img src="{{ $pet->photo }}" alt="{{ $pet->name }}" />
                                     </div>
                                 </div>
                                 <div>
                                     <div class="font-bold">{{ $pet->name }}</div>
                                     @if ($pet->kind == 'Dog')
-                                        <div class="badge badge-sm badge-soft badge-success">{{ $pet->kind }}</div>
+                                        <div class="badge badge-sm badge-success">{{ $pet->kind }}</div>
                                     @else
-                                        <div class="badge badge-sm badge-soft badge-error">{{ $pet->kind }}</div>
+                                        <div class="badge badge-sm badge-error">{{ $pet->kind }}</div>
                                     @endif
                                     <div class="text-sm opacity-50">{{ $pet->kind }}</div>
                                 </div>
@@ -45,8 +46,13 @@
                         </td>
                         <td>{{ $pet->location }}</td>
                         <th>
-                            <button class="btn btn-sm btn-outline btn-accent" onclick="showPetDetails({{ json_encode($pet) }})">
-                                Actions
+                            <button onclick='showPetDetails(@json($pet))'
+                                class="btn btn-sm btn-outline btn-accent tooltip" data-tip="Ver detalles">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 21l-5.2-5.2M16 10.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0z" />
+                                </svg>
                             </button>
                         </th>
                     </tr>
@@ -62,6 +68,8 @@
             </tfoot>
         </table>
     </div>
+
+    <!-- MODAL -->
     <div id="petModal" class="modal">
         <div class="modal-box w-96">
             <h2 id="petName" class="text-2xl font-bold"></h2>
@@ -73,10 +81,12 @@
             <p id="petLocation"></p>
             <p id="petDescription"></p>
             <div class="modal-action">
-                <button class="btn" onclick="closeModal()">Close</button>
+                <button class="btn" onclick="closeModal()">Cerrar</button>
             </div>
         </div>
     </div>
+
+    <!-- SCRIPTS -->
     <script>
         function showPetDetails(pet) {
             document.getElementById("petName").textContent = pet.name;
@@ -89,10 +99,12 @@
             document.getElementById("petDescription").textContent = `Descripción: ${pet.description}`;
             document.getElementById("petModal").classList.add("modal-open");
         }
+
         function closeModal() {
             document.getElementById("petModal").classList.remove("modal-open");
         }
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>

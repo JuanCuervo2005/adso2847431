@@ -16,10 +16,16 @@ class Pet extends Model
         'age',
         'breed',
         'location',
-        'description'
+        'description',
+        
     ];
+
+    //relacion mascota tiene una adopcion
 
     public function adoption() {
         return $this->hasOne(Adoption::class);
-    }
 }
+
+}
+   
+

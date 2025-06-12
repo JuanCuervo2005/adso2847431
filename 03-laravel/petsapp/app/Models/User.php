@@ -27,7 +27,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
-        'role'
+        'role' /*es opcional la coma */ 
     ];
 
     /**
@@ -53,11 +53,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function adoptions()
-    {
-        return $this->hasMany(Adoption::class);
-    }
-
     /**
      * Get the user's initials
      */
@@ -65,7 +60,14 @@ class User extends Authenticatable
     {
         return Str::of($this->name)
             ->explode(' ')
-            ->map(fn(string $name) => Str::of($name)->substr(0, 1))
+            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+    }
+
+    //relacion adoptar muchas mascotas
+
+    public function adoptions() {
+        return $this->hasMany(Adoption::class);
+       
     }
 }

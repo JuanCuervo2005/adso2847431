@@ -3,9 +3,9 @@
 
 @section('content')
 @include('layouts.navbar')
-
-<h1 class="text-6xl text-white mb-10">Welcome: Administrador</h1>
-<form method="POST" action="{{ route('logout') }}" class="text-white">
+<!-- Authentication -->
+<h1 class="text 6xl text-white mb-10">Welcome: Customer</h1>
+<form method="POST" action="{{ route('logout') }}">
     @csrf
     <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -14,4 +14,3 @@
     </a>
 </form>
 @endsection
-

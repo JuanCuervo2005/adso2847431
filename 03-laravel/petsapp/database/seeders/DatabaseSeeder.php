@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Pet;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Pet;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Seeders
-       $this ->call([
+        //estas son las semillas
+        $this->call([
             UserSeeder::class,
             PetSeeder::class
-       ]);
-       // Factories
-       Pet  :: factory(100)->create();
-       User :: factory(25)->create();
+        ]);
+
+        //factories
+        Pet::factory(100)->create();
+         User::factory(25)->create();
+
+       // User::factory()->create([
+      //     'name' => 'Test User',
+       //     'email' => 'test@example.com',
+       // ]);
     }
 }

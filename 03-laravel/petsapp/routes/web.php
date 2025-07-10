@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resources([
         'users' => UserController::class,
-        // 'pets' => PetController::class,
+        'pets' => App\Http\Controllers\PetController::class,
         // 'adoptions' => AdoptionController::class,
     ]);
 });
@@ -64,7 +64,7 @@ Route::get('show/pets', function () {
     $pets = \App\Models\Pet::all();
    // var_dump($pets->toArray());
    dd($pets->toArray()); //dd->dump and die
-    
+
 });
 
 Route::get('challenge/users', function () {
@@ -76,10 +76,10 @@ Route::get('challenge/users', function () {
                         <th style='background: gray; color: white; padding: 0.4rem'>Fullname</th>
                         <th style='background: gray; color: white; padding: 0.4rem'>Age</th>
                         <th style='background: gray; color: white; padding: 0.4rem'>Created At</th>
-                        
+
                     </tr>";
 
-                   
+
                     foreach ($users as $user){
                         $code .= ($user->id%2 == 0) ? "<tr style='background: #ddd'>" : "<tr>";
                         $code .= "<td style='border: 1px solid #ddd; padding: 0.4rem'>".$user->id."</td>";
@@ -90,24 +90,24 @@ Route::get('challenge/users', function () {
                         }
                         return $code. "</table>";
                     });
-                        
+
              Route::get('view/blade', function () {
                 $title = "Examples Blade";
                 $pets = App\Models\Pet::whereIn('kind', ['dog', 'cat'])->get();
-                                    
+
                 return view('example-view')
                 ->with('title', $title)
                 ->with('pets', $pets);
-             });    
-             
+             });
+
              Route::get('show/pet/{id}', function () {
                 $pet = \App\Models\Pet::find(request()->id);
                 return view('show-pet')->with('pet', $pet);
              });
 
-             
 
 
-    
-                
+
+
+
 

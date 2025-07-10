@@ -17,16 +17,25 @@ class PetFactory extends Factory
     public function definition(): array
     {
 
-    $kind = fake()->randomElements(['Dog', 'Cat', 'Fish', 'Mouse', 'Bird']);
+        $kinds = [
+            'Dog' => 'dog.jpg',
+            'Cat' => 'cat.jpg',
+            'Fish' => 'fish.jpg',
+            'Mouse' => 'mouse.jpg',
+            'Bird' => 'bird.jpg',
+        ];
+        $kind = fake()->randomElement(array_keys($kinds));
+        $image = $kinds[$kind] ?? 'no-photo.jpg';
         return [
-            'name'        =>fake()->domainWord(),
-            'kind'        =>implode($kind),
-            'weight'      =>fake()->numberBetween(1, 80),
-            'age'         =>fake()->randomNumber(2, true),
-            'breed'       =>fake()->colorName(),
-            'location'    =>fake()->city(),
-            'description' =>fake()->sentence(10),
-            'created_at'  =>now()
+            'name'        => fake()->domainWord(),
+            'kind'        => $kind,
+            'image'       => $image,
+            'weight'      => fake()->numberBetween(1, 80),
+            'age'         => fake()->numberBetween(1, 20),
+            'breed'       => fake()->colorName(),
+            'location'    => fake()->city(),
+            'description' => fake()->sentence(10),
+            'created_at'  => now()
         ];
     }
 }

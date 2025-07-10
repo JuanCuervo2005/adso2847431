@@ -10,12 +10,20 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$users = User::all();
-        $users = User::paginate(10);
-        //$users = User::simplePaginate(10);
-        //dd($users->toArray()); //Dump & Die
+        $query = User::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('fullname', 'like', "%$search%")
+                  ->orWhere('email', 'like', "%$search%")
+                  ->orWhere('document', 'like', "%$search%")
+                  ->orWhere('role', 'like', "%$search%")
+                  ;
+            });
+        }
+        $users = $query->paginate(10)->appends(['search' => $request->search]);
         return view('users.index')->with('users', $users);
     }
 
@@ -80,7 +88,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -88,7 +96,36 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'document'  => ['required', 'numeric', 'unique:users,document,' . $user->id],
+            'fullname'  => ['required', 'string'],
+            'gender'    => ['required'],
+            'birthdate' => ['required', 'date'],
+            'phone'     => ['required'],
+            'email'     => ['required', 'lowercase', 'email', 'unique:users,email,' . $user->id],
+            'photo'     => ['nullable'],
+            'password'  => ['nullable', 'confirmed'],
+        ]);
+
+        if($request->hasFile('photo')) {
+            $photo = time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('images'), $photo);
+            $user->photo = $photo;
+        }
+
+        $user->document  = $request->document;
+        $user->fullname  = $request->fullname;
+        $user->gender    = $request->gender;
+        $user->birthdate = $request->birthdate;
+        $user->phone     = $request->phone;
+        $user->email     = $request->email;
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
+
+        if ($user->save()) {
+            return redirect('users')->with('message', 'The user: '.$user->fullname.' was successfully updated!');
+        }
     }
 
     /**
@@ -96,6 +133,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('users')->with('message', 'The user: '.$user->fullname.' was successfully deleted!');
     }
 }

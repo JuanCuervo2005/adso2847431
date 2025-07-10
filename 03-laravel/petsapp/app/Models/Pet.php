@@ -12,12 +12,10 @@ class Pet extends Model
         'name',
         'image',
         'kind',
-        'weight',
         'age',
         'breed',
         'location',
         'description',
-        
     ];
 
     //relacion mascota tiene una adopcion
@@ -27,5 +25,5 @@ class Pet extends Model
 }
 
 }
-   
+
 
